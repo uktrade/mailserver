@@ -8,7 +8,8 @@ RUN apt-get update && \
     apt-get install -y supervisor gettext-base && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y libsasl2-2 sasl2-bin \
     libsasl2-modules fail2ban certbot dovecot-pop3d dovecot-core dovecot-lmtpd \
-    dovecot-pgsql postfix postfix-pgsql postgresql-client
+    dovecot-pgsql postfix postfix-pgsql postgresql-client && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY rootfs/ /
 
@@ -17,10 +18,8 @@ RUN adduser --system --no-create-home --uid 500 --group --disabled-password --di
     chown vmail:vmail /var/vmail && \
     chmod 700 /var/vmail
 
-RUN chmod +x /home/run.sh
-
-RUN service postfix stop
-RUN service dovecot stop
+RUN chmod +x /home/run.sh; chmod +x /home/renew-certs.sh
+RUN service postfix stop; service dovecot stop
 
 VOLUME /var/vmail
 VOLUME /etc/letsencrypt
