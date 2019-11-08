@@ -7,6 +7,7 @@
 : "${POSTGRES_USERNAME?Need to set POSTGRES_USERNAME}"
 : "${POSTGRES_PASSWORD?Need to set POSTGRES_PASSWORD}"
 
+envsubst < "/etc/supervisor/supervisord.conf.tmpl" > "/etc/supervisor/supervisord.conf."
 envsubst < "/etc/postfix/main.cf.tmpl" > "/etc/postfix/main.cf"
 envsubst < "/etc/postfix/pgsql-virtual-alias-maps.cf.tmpl" > "/etc/postfix/pgsql-virtual-alias-maps.cf"
 envsubst < "/etc/postfix/pgsql-virtual-email2email.cf.tmpl" > "/etc/postfix/pgsql-virtual-email2email.cf"
