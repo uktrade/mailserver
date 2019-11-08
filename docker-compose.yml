@@ -1,11 +1,12 @@
 version: '3'
 services:
   mail:
-    build: mailserver/
+    build: .
     ports:
       - "25:25"
       - "587:587"
       - "995:995"
+      - "80:80"
     volumes:
        - maildata:/var/vmail
     environment:

@@ -31,7 +31,7 @@ disable_plaintext_auth = yes
 
 # Default realm/domain to use if none was specified. This is used for both
 # SASL realms and appending @domain to username in plaintext logins.
-#auth_default_realm = example.com
+auth_default_realm = ${EMAIL_DOMAIN}
 
 # List of allowed characters in username. If the user-given username contains
 # a character not listed in here, the login automatically fails. This is just
