@@ -5,7 +5,7 @@ EXPOSE 80 25 587 995
 WORKDIR /home
 
 RUN apt-get update && \
-    apt-get install -y supervisor gettext-base && \
+    apt-get install -y supervisor rsyslog gettext-base && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y libsasl2-2 sasl2-bin \
     libsasl2-modules fail2ban certbot dovecot-pop3d dovecot-core dovecot-lmtpd postfix && \
     rm -rf /var/lib/apt/lists/*
