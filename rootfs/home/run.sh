@@ -14,10 +14,10 @@ if [ "$USE_LETSENCRYPT" == "yes" ]; then
   else
     certbot renew
   fi
-  postconf -e "smtpd_tls_cert_file = /etc/letsencrypt/live/${EMAIL_DOMAIN}/fullchain.pem"
-  postconf -e "smtpd_tls_key_file = /etc/letsencrypt/live/${EMAIL_DOMAIN}/privkey.pem"
-  sed -i "s/^ssl_cert = .*$/ssl_cert = \<\/etc\/letsencrypt\/live\/${EMAIL_DOMAIN}\/fullchain.pem/g" /etc/dovecot/conf.d/10-ssl.conf
-  sed -i "s/^ssl_key = .*$/ssl_key = \<\/etc\/letsencrypt\/live\/${EMAIL_DOMAIN}\/privkey.pem/g" /etc/dovecot/conf.d/10-ssl.conf
+  postconf -e "smtpd_tls_cert_file = /etc/letsencrypt/live/mail.${EMAIL_DOMAIN}/fullchain.pem"
+  postconf -e "smtpd_tls_key_file = /etc/letsencrypt/live/mail.${EMAIL_DOMAIN}/privkey.pem"
+  sed -i "s/^ssl_cert = .*$/ssl_cert = \<\/etc\/letsencrypt\/live\/mail.${EMAIL_DOMAIN}\/fullchain.pem/g" /etc/dovecot/conf.d/10-ssl.conf
+  sed -i "s/^ssl_key = .*$/ssl_key = \<\/etc\/letsencrypt\/live\/mail.${EMAIL_DOMAIN}\/privkey.pem/g" /etc/dovecot/conf.d/10-ssl.conf
 fi
 
 # set up emails/passwords etc.

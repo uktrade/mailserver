@@ -1,40 +1,7 @@
-# Postfix and dovecot mailserver deployed in AWS
-  
-## NOTEs
+# Postfix and dovecot docker mailserver
 
-* ECS is used purely for convenience.  We are currently only running a single instance, and that instance has an elastic IP address manually mapped to it.  The relevant MX/A records point to this EIP.
+## Notes
 
-## Steps to build the stack
-
-There are two separate, but related, terraform stacks.  The first stack builds the ECS cluster, and the second stack provisions the ECS service.  The stacks are separate and should be run separately as there are manual steps required to stand up an email server - namely mapping an EIP.
-
-### Step 1 - build the cluster
-
-### Step 2 - map EIP
-
-### Step 3 - provision the service
-
-## Administration 
-
-### Changing the SMTP password
-
-### Changing the POP3 password
- 
-## Failure and recovery scenarios
-
-The cluster instance dies:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* Ports: SMTP transport: 25, SMTP MUA (mail client), pop3s: 995, imap is not enabled
+* If USE_LETSENCRYPT is set to 'yes', then certs will be allocated for mail.yourdomain.tld and pop3.yourdomain.tld. Otherwise self signed certs will be used
+* TLS is required on all ports

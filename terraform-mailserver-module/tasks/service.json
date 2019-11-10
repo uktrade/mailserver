@@ -1,0 +1,61 @@
+[
+  {
+    "name": "mailserver",
+    "image": "${mailserver_registry}",
+    "cpu": 200,
+    "memory": 512,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 80,
+        "hostPort": 80
+      },
+      {
+        "containerPort": 25,
+        "hostPort": 25
+      },
+      {
+        "containerPort": 587,
+        "hostPort": 587
+      },
+      {
+        "containerPort": 995,
+        "hostPort": 995
+      }
+    ],
+    "environment": [
+      {
+        "name": "EMAIL_DOMAIN",
+        "value": "${email_domain}"
+      },
+      {
+        "name": "CERTBOT_EMAIL",
+        "value": "${certbot_email}"
+      },
+      {
+        "name": "MAIL_USERNAME",
+        "value": "${mail_username}"
+      },
+      {
+        "name": "MAIL_PASSWORD",
+        "value": "${mail_password}"
+      },
+      {
+        "name": "USE_LETSENCRYPT",
+        "value": "no"
+      }
+    ],
+    "mountPoints": [
+      {
+          "sourceVolume": "maildata",
+          "containerPath": "/var/vmail",
+          "readOnly": false
+      },
+      {
+        "sourceVolume": "letsencrypt",
+        "containerPath": "/etc/letsencrypt",
+        "readOnly": false
+      }
+    ]
+  }
+]
