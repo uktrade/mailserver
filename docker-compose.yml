@@ -12,26 +12,10 @@ services:
     environment:
       EMAIL_DOMAIN: example.com
       RELAY_ADDRESS: api:10025
-      SMTP_USERS: "lyndon:password"
       CERTBOT_EMAIL: test@test.com
-      SMTP_AUTH_USERNAME: username
-      SMTP_AUTH_PASSWORD: password
-      POSTGRES_DATABASE: mails
-      POSTGRES_HOSTNAME: db
-      POSTGRES_USERNAME: postgres
-      POSTGRES_PASSWORD: password
       USE_LETSENCRYPT: "no"
-    links:
-      - db
-  db:
-    build: postgres/
-    environment:
-      POSTGRES_DB: mails
-      POSTGRES_USERNAME: postgres
-      POSTGRES_PASSWORD: password
-    volumes:
-       - pgdata:/var/lib/postgresql/data
+      MAIL_USERNAME: username
+      MAIL_PASSWORD: password
 
 volumes:
   maildata:
-  pgdata:
