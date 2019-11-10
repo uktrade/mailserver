@@ -25,6 +25,7 @@ PASSWORD_HASH=$(doveadm pw -s SHA512-CRYPT -p ${MAIL_PASSWORD})
 echo "${MAIL_USERNAME}:${PASSWORD_HASH}::::::" >> /etc/dovecot/passwd
 echo "${MAIL_USERNAME}@${EMAIL_DOMAIN} ${MAIL_USERNAME}" >> /etc/postfix/vmailbox
 echo "postmaster@${EMAIL_DOMAIN} postmaster" >> /etc/postfix/virtual
+echo "${MAIL_USERNAME}@${EMAIL_DOMAIN} ${MAIL_USERNAME}" >> /etc/postfix/virtual
 postmap /etc/postfix/vmailbox
 postmap /etc/postfix/virtual
 
