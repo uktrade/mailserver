@@ -61,11 +61,6 @@ smtpd_relay_restrictions =
 
 virtual_transport = lmtp:unix:private/dovecot-lmtp
 
-# Virtual domains, users, and aliases
-#virtual_mailbox_domains = pgsql:/etc/postfix/pgsql-virtual-mailbox-domains.cf
-#virtual_mailbox_maps = pgsql:/etc/postfix/pgsql-virtual-mailbox-maps.cf
-#virtual_alias_maps = pgsql:/etc/postfix/pgsql-virtual-alias-maps.cf,
-#        pgsql:/etc/postfix/pgsql-virtual-email2email.cf
 virtual_mailbox_domains = ${EMAIL_DOMAIN}
 virtual_mailbox_maps = hash:/etc/postfix/vmailbox
 virtual_alias_maps = hash:/etc/postfix/virtual
