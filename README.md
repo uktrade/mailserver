@@ -13,9 +13,9 @@ Stand up the server with docker-compose: `docker-compose up`
 
 Based on the configuration in the `docker-compose.yml file:
 
-The email address is: `username@example.com`
-The username for both pop3 and smtp is: username
-The password for both services is: password
+* The email address is: `username@example.com`  
+* The username for both pop3 and smtp is: username  
+* The password for both services is: password  
 
 You can use a mail client to connect to localhost on ports 995 for pop3 or 587 for smtp.
 
